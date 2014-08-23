@@ -1,0 +1,4 @@
+anythingslider
+==============
+
+jQuery AnythingSlider
