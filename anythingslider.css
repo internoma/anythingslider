@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+/**
+* AnythingSlider
+* @authors Alfredo González P. (alfredo@internoma.com)
+* @date    2014-08-23 13:26:33
+* @version 1.0.0
+*/
+
+
+/* ==========================================================================
+General class
+========================================================================== */
+/**
+* General class from app
+*/
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+	text-align: center;
+	font-family: sans-serif; 
+	font-size: 45px;
+	color: #fff;
+	background-color: #ddd;
+}
+div#anythingSlider {
+	margin: 0 auto;
+	background-color: transparent;
+	width: 900px;
+	padding-bottom: 50px;
+	border-color: #99999;
+	border-style: solid;
+	border-width: 1px;
+}
+ul#anythingSlider-content {
+	display: block;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+ul#anythingSlider-content li {
+	display: none;
+	background-color: #ff6f4d;
+	width: 900px;
+	margin: 0;
+	padding: 0;
+	font-size: 0;
+}
+ul#anythingSlider-content img {
+	width: 100%;
+}
+ul#anythingSlider-content li:first-child {
+	display: block;
+}
+ul#anythingSlider-nav {
+	padding-top: 15px; /* distancia entre navegación y slider */
+	font-size: 0;		
+	line-height: 0;
+}
+ul#anythingSlider-nav li {
+	display: inline-block;
+	background-color: white;
+	width: 15px;
+	height: 15px;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	border-color: #FFF;
+	border-style: solid;
+	border-width: 1px;
+	text-align: center;
+	cursor: pointer;
+	margin-right: 25px; /* distancia entre puntos de navegación */
+}
+ul#anythingSlider-nav li.preactive {
+	border-color: #ff6f4d;
+}
+ul#anythingSlider-nav li:last-child {
+	margin-right: 0;
+}
+ul#anythingSlider-nav li.active {
+	background-color: #ff6f4d;
+}
+div.description {
+	font-size: 18px;
+	color: #888;
+	text-align: left;
+	width: 800px;
+	margin: 0 auto;
+}
+div.description ul {
+	display: block;
+	padding: 15px;
+	margin: 0;
+}
+h2 {
+	color: #666;
+}
+h2 small {
+	color: #ff6f4d;
+}

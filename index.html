@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Anything-Slider</title>
+	<link rel="stylesheet" href="anythingslider.css">
+</head>
+<body>
+
+	<a href="https://github.com/internoma/anythingslider" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+
+	<!-- AnythingSlider v 1.0.0 alpha -->
+	<div id="anythingSlider">
+		<ul id="anythingSlider-content">
+		    <li data-time="5000">
+		    	<img src="http://media.giphy.com/media/118Ue8iVVEYR5S/giphy.gif" alt="">
+		    </li>
+		    <li data-time="3000">
+		    	<img src="http://media.giphy.com/media/xxDZ4E4f043oA/giphy.gif" alt="">
+		    </li>
+		    <li data-time="4000">
+		    	<img src="http://media0.giphy.com/media/oVfNppMFsuouI/giphy.gif" alt="">
+		    </li>
+		    <li data-time="45000">
+		    	<iframe width="853" height="480" src="//www.youtube-nocookie.com/embed/vMX6lRDJvIw?autoplay=1" frameborder="0" allowfullscreen></iframe>
+		    </li>
+		    <li data-time="5000">
+		    	<img src="http://lorempixel.com/f/400/200/" alt="">
+		    </li>
+		    <li data-time="15000">
+		    	<object width="450" height="300" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="src" value="http://flash-clocks.com/blog/flash-animation/flash-animation-dancing-skeleton.swf"><param name="scale" value="showall"><embed width="853" height="480" type="application/x-shockwave-flash" src="http://flash-clocks.com/blog/flash-animation/flash-animation-dancing-skeleton.swf" scale="showall"></object>
+		    </li>
+		</ul>
+		<ul id="anythingSlider-nav">
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		    <li></li>
+		</ul>
+	</div>
+	<!-- AnythingSlider v 1.0.0 alpha -->
+
+	<div class="description">
+		<h2>jQuery AnythingSlider v 1.0.0 <em>alpha</em> <small>@by Alf</small></h2>
+		<h4>23-08-2014 12:55</h4>
+		<ul>
+			<li>Compatible HTML5</li>
+			<li>jQuery Plugin</li>
+			<li>Superoptimizado 1.505 bytes</li>
+			<li>Autoejecuta animaciones gif, animaciones flash y vídeos.</li>
+			<li>Temporiza cada elemento del slide mediante el atributo data-time.</li>
+			<li>Permite la navegación directa interactiva.</li>
+			<li>Modo aleatorio y secuencial mediante parámetro 'random'</li>
+			<li>Modo animación mediante parámetro 'plain/fade/slide'</li>
+		</ul>
+	</div>
+
+	<script>
+		(function () {
+		  var js;
+		  if (typeof JSON !== 'undefined' && 'querySelector' in document && 'addEventListener' in window) {
+		    js = 'http://code.jquery.com/jquery-2.1.0.min.js';
+		  } else {
+		    js = 'http://code.jquery.com/jquery-1.11.0.min.js';
+		  }
+		  document.write('<script src="' + js + '"><\/script>');
+		}());
+	</script>
+
+	<script src="jquery.anythingslider_plugin.min.js"></script>
+
+	<script>
+		jQuery(document).on('ready', function() {
+			// uso: jQuery.anythingslider(['random/secuential'],['plain/fade/slide']);
+			jQuery.anythingslider('secuential','fade');
+		});
+	</script>
+</body>
+</html>
