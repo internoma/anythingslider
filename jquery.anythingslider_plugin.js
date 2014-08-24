@@ -21,6 +21,7 @@ jQuery.anythingslider = function(type,animation) {
 		content.shuffle();
 		content = jQuery('ul#anythingSlider-content li');
 		enow = jQuery('ul#anythingSlider-content li:nth-child(1)');
+		datatime = enow.data('time');
 	}
 
 	jQuery.each(content, function(index, value){
