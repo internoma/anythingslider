@@ -1,18 +1,19 @@
 /**
 * AnythingSlider jQuery Plugin.
-* @authors Alfredo González P. (alfredo@internoma.com)
+* @authors Alfredo González P.
 * @date    2014-08-23 13:33:03
-* @version 1.0.0
+* @version 1.0.1
 */
 
-jQuery.anythingslider = function(type,animation) {
+jQuery.anythingslider = function(type,animation,transition) {
 
 	"use strict";
 
 	var content = jQuery('ul#anythingSlider-content li');
 	var navs = jQuery('ul#anythingSlider-nav li');
 	var elength = content.length;
-	var cont = 1;
+	var cont = 0;
+	var current = 0;
 	var enow = jQuery('ul#anythingSlider-content li:nth-child(1)');
 	var datatime = enow.data('time');
 	var elemcontent = [];
@@ -26,24 +27,19 @@ jQuery.anythingslider = function(type,animation) {
 
 	jQuery.each(content, function(index, value){
 		elemcontent.push( jQuery(value).html() );
-		jQuery(content[index]).html('');
-		window.console.log(index + ' - ' + elemcontent[index]);
+		if (index > 0) jQuery(content[index]).html('');
 	});
 
-	jQuery(content[0]).html(elemcontent[0]);
-
-	if (animation === 'fade') {
-		enow.fadeIn();
-	} else if (animation === 'slide') {
-		enow.slideDown();
-	} else {
-		enow.show();
-	}
+	enow.show();
+	
 	jQuery('ul#anythingSlider-nav li:nth-child(1)').addClass("active");
 
-	var fnslide = function () {
+	var fnslide = function (current) {
 		clearInterval(interval);
 
+		if (current > 1) cont = current;
+
+		jQuery(content).html('');
 		jQuery(content[cont]).html(elemcontent[cont]);
 
 		if (animation === 'slide') {
@@ -51,11 +47,15 @@ jQuery.anythingslider = function(type,animation) {
 		} else {
 			enow.hide();
 		}
-		navs.removeClass("active").removeClass("preactive");
+		if (transition === 'direct') {
+			navs.removeClass("active");
+		} else {
+			navs.removeClass("active").removeClass("preactive");
+		}
 		if (cont < elength) {
 			cont++;
 		} else {
-			cont = 1;
+			cont = 0;
 		}
 		enow = jQuery('ul#anythingSlider-content li:nth-child('+cont+')');
 		if (animation === 'fade') {
@@ -74,11 +74,19 @@ jQuery.anythingslider = function(type,animation) {
 	// interactividad de navegacion
 	//
 	navs.on('click', function(){
-		if (jQuery(this).index()+1 != cont) {
-			cont = jQuery(this).index();
-			navs.removeClass("preactive");
-			jQuery(this).addClass("preactive");
+
+		current = jQuery(this).index();
+
+		if (transition === 'direct') {
+			fnslide(current);
+		} else {
+			if (current != cont) {
+				cont = jQuery(this).index();
+				navs.removeClass("preactive");
+				jQuery(this).addClass("preactive");
+			}
 		}
+
 	});
 
 };

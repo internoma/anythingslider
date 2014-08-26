@@ -1,15 +1,19 @@
-#jQuery AnythingSlider v 1.0.0 alpha @by Alf
+#jQuery AnythingSlider v 1.0.1 alpha @by Alf
 
-###23-08-2014 12:55
+###23-08-2014 12:55 v 1.0.0
 
 - Compatible HTML5
 - jQuery Plugin
-- Superoptimizado 1.505 bytes
+- Superoptimizado 1.5 Kbytes
 - Autoejecuta animaciones gif, animaciones flash y vídeos.
 - Temporiza cada elemento del slide mediante el atributo data-time.
-- Permite la navegación directa interactiva.
-- Modo aleatorio y secuencial mediante parámetro 'random'
-- Modo animación mediante parámetro 'plain/fade/slide'
+- Modo aleatorio y secuencial mediante parámetro 'random/secuential' por defecto secuential
+- Modo animación mediante parámetro 'plain/fade/slide' por defecto plain
+
+###26-08-2014 22:46 v 1.0.1
+
+- Permite la navegación directa interactiva, parámetro 'direct/preactive' por defecto preactive.
+- Descripciones al pasar el puntero.
 
 ###Demo
 	
@@ -23,8 +27,8 @@
 
 		<script>
 			jQuery(document).on('ready', function() {
-				// uso: jQuery.anythingslider(['random/secuential'],['plain/fade/slide']);
-				jQuery.anythingslider('secuential','fade');
+				// uso: jQuery.anythingslider(['random/secuential'],['plain/fade/slide'],[direct/preactive]);
+				jQuery.anythingslider('random','fade','direct');
 			});
 		</script>
 
