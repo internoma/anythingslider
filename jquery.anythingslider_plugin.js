@@ -32,15 +32,11 @@ jQuery.anythingslider = function(type,animation,transition) {
 
 	enow.show();
 	
+
 	jQuery('ul#anythingSlider-nav li:nth-child(1)').addClass("active");
 
 	var fnslide = function (current) {
 		clearInterval(interval);
-
-		if (current > 1) cont = current;
-
-		jQuery(content).html('');
-		jQuery(content[cont]).html(elemcontent[cont]);
 
 		if (animation === 'slide') {
 			enow.slideUp();
@@ -52,12 +48,19 @@ jQuery.anythingslider = function(type,animation,transition) {
 		} else {
 			navs.removeClass("active").removeClass("preactive");
 		}
+
+		if (current > 0) cont = current - 1;
+
 		if (cont < elength) {
 			cont++;
 		} else {
 			cont = 0;
 		}
-		enow = jQuery('ul#anythingSlider-content li:nth-child('+cont+')');
+		
+		jQuery(content).html('');
+		jQuery(content[cont]).html(elemcontent[cont]);
+
+		enow = jQuery('ul#anythingSlider-content li:nth-child('+ (cont +1) +')');
 		if (animation === 'fade') {
 			enow.fadeIn();
 		} else if (animation === 'slide') {
@@ -66,7 +69,7 @@ jQuery.anythingslider = function(type,animation,transition) {
 			enow.show();
 		}
 		datatime = enow.data('time');
-		jQuery('ul#anythingSlider-nav li:nth-child('+cont+')').addClass("active");
+		jQuery('ul#anythingSlider-nav li:nth-child('+ (cont +1) +')').addClass("active");
 		interval = window.setInterval(fnslide, datatime);
 	};
 	var interval = window.setInterval(fnslide, datatime);

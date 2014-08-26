@@ -37,13 +37,16 @@
 		<div id="anythingSlider">
 			<ul id="anythingSlider-content">
 			    <li data-time="5000">
-			    	<!-- your content here -->
+			    	<!-- your content (gif, image, flash, video, html) here -->
+			    	<p class="caption black bottom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto debitis ipsam dolores, tempore assumenda sint soluta aspernatur unde quas nam. Eaque eveniet, asperiores distinctio odit nulla blanditiis consequuntur delectus saepe.</p>
 			    </li>
 			    <li data-time="5000">
-			    	<!-- your content here -->
+			    	<!-- your content (gif, image, flash, video, html) here -->
+			    	<p class="caption black bottom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto debitis ipsam dolores, tempore assumenda sint soluta aspernatur unde quas nam. Eaque eveniet, asperiores distinctio odit nulla blanditiis consequuntur delectus saepe.</p>
 			    </li>
 			    <li data-time="5000">
-			    	<!-- your content here -->
+			    	<!-- your content (gif, image, flash, video, html) here -->
+			    	<p class="caption black bottom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto debitis ipsam dolores, tempore assumenda sint soluta aspernatur unde quas nam. Eaque eveniet, asperiores distinctio odit nulla blanditiis consequuntur delectus saepe.</p>
 			    </li>
 			</ul>
 			<ul id="anythingSlider-nav">
