@@ -5,23 +5,23 @@
 * @version 1.0.1
 */
 
-jQuery.anythingslider = function(type,animation,transition) {
+jQuery.anythingslider = function(idContent,type,animation,transition) {
 
 	"use strict";
 
-	var content = jQuery('ul#anythingSlider-content li');
-	var navs = jQuery('ul#anythingSlider-nav li');
+	var content = jQuery(idContent + ' .anythingSlider-content li');
+	var navs = jQuery(idContent + ' .anythingSlider-nav li');
 	var elength = content.length;
 	var cont = 0;
 	var current = 0;
-	var enow = jQuery('ul#anythingSlider-content li:nth-child(1)');
+	var enow = jQuery(idContent + ' .anythingSlider-content li:nth-child(1)');
 	var datatime = enow.data('time');
 	var elemcontent = [];
 
 	if (type === 'random') {
 		content.shuffle();
-		content = jQuery('ul#anythingSlider-content li');
-		enow = jQuery('ul#anythingSlider-content li:nth-child(1)');
+		content = jQuery(idContent + ' .anythingSlider-content li');
+		enow = jQuery(idContent + ' .anythingSlider-content li:nth-child(1)');
 		datatime = enow.data('time');
 	}
 
@@ -32,7 +32,7 @@ jQuery.anythingslider = function(type,animation,transition) {
 
 	enow.show();
 
-	jQuery('ul#anythingSlider-nav li:nth-child(1)').addClass("active");
+	jQuery(idContent + ' .anythingSlider-nav li:nth-child(1)').addClass("active");
 
 	var fnslide = function (current) {
 		clearInterval(interval);
@@ -60,7 +60,7 @@ jQuery.anythingslider = function(type,animation,transition) {
 		jQuery(content).html('');
 		jQuery(content[cont]).html(elemcontent[cont]);
 
-		enow = jQuery('ul#anythingSlider-content li:nth-child('+ (cont +1) +')');
+		enow = jQuery(idContent + ' .anythingSlider-content li:nth-child('+ (cont +1) +')');
 		if (animation === 'fade') {
 			enow.fadeIn();
 		} else if (animation === 'slide') {
@@ -69,7 +69,7 @@ jQuery.anythingslider = function(type,animation,transition) {
 			enow.show();
 		}
 		datatime = enow.data('time');
-		jQuery('ul#anythingSlider-nav li:nth-child('+ (cont +1) +')').addClass("active");
+		jQuery(idContent + ' .anythingSlider-nav li:nth-child('+ (cont +1) +')').addClass("active");
 		interval = window.setInterval(fnslide, datatime);
 	};
 	var interval = window.setInterval(fnslide, datatime);

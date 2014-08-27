@@ -30,7 +30,7 @@ body {
 AnythingSlider class
 ========================================================================== */
 
-div#anythingSlider {
+.anythingSlider {
 	margin: 0 auto;
 	background-color: transparent;
 	width: 900px;
@@ -39,13 +39,13 @@ div#anythingSlider {
 	border-style: solid;
 	border-width: 1px;
 }
-ul#anythingSlider-content {
+ul.anythingSlider-content {
 	display: block;
 	list-style: none;
 	padding: 0;
 	margin: 0;
 }
-ul#anythingSlider-content li {
+ul.anythingSlider-content li {
 	position: relative;
 	display: none;
 	background-color: #ff6f4d;
@@ -54,18 +54,18 @@ ul#anythingSlider-content li {
 	padding: 0;
 	font-size: 0;
 }
-ul#anythingSlider-content img {
+ul.anythingSlider-content img {
 	width: 100%;
 }
-ul#anythingSlider-content li:first-child {
+ul.anythingSlider-content li:first-child {
 	display: block;
 }
-ul#anythingSlider-nav {
+ul.anythingSlider-nav {
 	padding-top: 15px; /* distancia entre navegación y slider */
 	font-size: 0;		
 	line-height: 0;
 }
-ul#anythingSlider-nav li {
+ul.anythingSlider-nav li {
 	display: inline-block;
 	background-color: white;
 	width: 15px;
@@ -79,14 +79,14 @@ ul#anythingSlider-nav li {
 	cursor: pointer;
 	margin-right: 25px; /* distancia entre puntos de navegación */
 }
-ul#anythingSlider-nav li.preactive {
+.preactive {
 	border-color: #ff6f4d;
 }
-ul#anythingSlider-nav li:last-child {
+ul.anythingSlider-nav li:last-child {
 	margin-right: 0;
 }
-ul#anythingSlider-nav li.active {
-	background-color: #ff6f4d;
+.active {
+	background-color: #ff6f4d !important;
 }
 
 
@@ -95,7 +95,7 @@ ul#anythingSlider-nav li.active {
 Captions
 ========================================================================== */
 
-ul#anythingSlider-content li:hover > .caption {
+ul.anythingSlider-content li:hover > .caption {
 	opacity: 1;
 }
 
@@ -116,11 +116,11 @@ ul#anythingSlider-content li:hover > .caption {
 
 .black {
 	color: #FFF;
-	background-color: rgba(0,0,0,0.3);	
+	background-color: rgba(0,0,0,0.3);
 }
 .white {
 	color: #000;
-	background-color: rgba(255,255,255,0.3);	
+	background-color: rgba(255,255,255,0.3);
 }
 .bottom {
 	bottom: 0 !important;

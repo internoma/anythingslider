@@ -9,9 +9,11 @@
 
 	<a href="https://github.com/internoma/anythingslider" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
 
+	<div id="slider">
+		
 	<!-- AnythingSlider v 1.0.1 alpha -->
-	<div id="anythingSlider">
-		<ul id="anythingSlider-content">
+	<div class="anythingSlider">
+		<ul class="anythingSlider-content">
 		    <li data-time="5000">
 		    	<img src="http://media.giphy.com/media/118Ue8iVVEYR5S/giphy.gif" alt="">
 		    	<p class="caption black top">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto debitis ipsam dolores, tempore assumenda sint soluta aspernatur unde quas nam. Eaque eveniet, asperiores distinctio odit nulla blanditiis consequuntur delectus saepe.</p>
@@ -38,7 +40,7 @@
 		    	<p class="caption black bottom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto debitis ipsam dolores, tempore assumenda sint soluta aspernatur unde quas nam. Eaque eveniet, asperiores distinctio odit nulla blanditiis consequuntur delectus saepe.</p>
 		    </li>
 		</ul>
-		<ul id="anythingSlider-nav">
+		<ul class="anythingSlider-nav">
 		    <li></li>
 		    <li></li>
 		    <li></li>
@@ -48,6 +50,8 @@
 		</ul>
 	</div>
 	<!-- AnythingSlider v 1.0.1 alpha -->
+
+	</div>
 
 	<div class="description">
 		<h2>jQuery AnythingSlider v 1.0.1 <em>alpha</em> <small>@by Alf</small></h2>
@@ -78,12 +82,12 @@
 		}());
 	</script>
 
-	<script src="jquery.anythingslider_plugin.min.js"></script>
+	<script src="jquery.anythingslider_plugin.js"></script>
 
 	<script>
 		jQuery(document).on('ready', function() {
 			// uso: jQuery.anythingslider(['random/secuential'],['plain/fade/slide'],[direct/preactive]);
-			jQuery.anythingslider('random','fade','direct');
+			jQuery.anythingslider('#slider','random','fade','direct');
 		});
 	</script>
 </body>
