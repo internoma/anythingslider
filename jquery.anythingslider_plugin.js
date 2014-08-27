@@ -31,12 +31,12 @@ jQuery.anythingslider = function(type,animation,transition) {
 	});
 
 	enow.show();
-	
 
 	jQuery('ul#anythingSlider-nav li:nth-child(1)').addClass("active");
 
 	var fnslide = function (current) {
 		clearInterval(interval);
+
 
 		if (animation === 'slide') {
 			enow.slideUp();
@@ -49,14 +49,14 @@ jQuery.anythingslider = function(type,animation,transition) {
 			navs.removeClass("active").removeClass("preactive");
 		}
 
-		if (current > 0) cont = current - 1;
+		if (current >= 0) cont = current - 1;
 
 		if (cont < elength) {
 			cont++;
 		} else {
 			cont = 0;
 		}
-		
+
 		jQuery(content).html('');
 		jQuery(content[cont]).html(elemcontent[cont]);
 
