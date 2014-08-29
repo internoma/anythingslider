@@ -36,7 +36,7 @@
 		<script>
 			jQuery(document).on('ready', function() {
 				// uso: jQuery.anythingslider(['random/secuential'],['plain/fade/slide'],[direct/preactive]);
-				jQuery.anythingslider('random','fade','direct');
+				jQuery.anythingslider('#slider','random','fade','direct');
 			});
 		</script>
 
