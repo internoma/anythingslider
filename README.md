@@ -35,12 +35,14 @@
 
 		<script>
 			jQuery(document).on('ready', function() {
-				// uso: jQuery.anythingslider(['random/secuential'],['plain/fade/slide'],[direct/preactive]);
+				// uso: jQuery.anythingslider(#idcontent, ['random/secuential'], ['plain/fade/slide'], [direct/preactive]);
 				jQuery.anythingslider('#slider','random','fade','direct');
 			});
 		</script>
 
 ###Estructura HTML5
+
+	<div id="slider">
 
 		<div class="anythingSlider">
 			<ul class="anythingSlider-content">
@@ -64,3 +66,4 @@
 			</ul>
 		</div>
 
+	</div>
