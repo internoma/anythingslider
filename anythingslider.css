@@ -66,7 +66,10 @@ ul.anythingSlider-nav {
 	line-height: 0;
 }
 ul.anythingSlider-nav li {
+	display: inline-table;
 	display: inline-block;
+	*display: inline;
+	*zoom: 1;
 	background-color: white;
 	width: 15px;
 	height: 15px;

@@ -17,6 +17,8 @@ jQuery.anythingslider = function(idContent,type,animation,transition) {
 	var enow = jQuery(idContent + ' .anythingSlider-content li:nth-child(1)');
 	var datatime = enow.data('time');
 	var elemcontent = [];
+	var img_url = '';
+	var jQ_contentAct;
 
 	if (type === 'random') {
 		content.shuffle();
@@ -36,7 +38,6 @@ jQuery.anythingslider = function(idContent,type,animation,transition) {
 
 	var fnslide = function (current) {
 		clearInterval(interval);
-
 
 		if (animation === 'slide') {
 			enow.slideUp();
@@ -58,7 +59,17 @@ jQuery.anythingslider = function(idContent,type,animation,transition) {
 		}
 
 		jQuery(content).html('');
-		jQuery(content[cont]).html(elemcontent[cont]);
+		jQ_contentAct = jQuery(content[cont]);
+		jQ_contentAct.html(elemcontent[cont]);
+
+		if (cont < elength) {
+			if ( elemcontent[cont].indexOf(".gif") > 0 ) {
+				var date = new Date();
+				img_url = jQ_contentAct.find('img').attr('src');
+				img_url = img_url  + '?v=' + date.getTime();
+				jQ_contentAct.find('img').attr('src', img_url);
+			}
+		}
 
 		enow = jQuery(idContent + ' .anythingSlider-content li:nth-child('+ (cont +1) +')');
 		if (animation === 'fade') {
@@ -72,11 +83,12 @@ jQuery.anythingslider = function(idContent,type,animation,transition) {
 		jQuery(idContent + ' .anythingSlider-nav li:nth-child('+ (cont +1) +')').addClass("active");
 		interval = window.setInterval(fnslide, datatime);
 	};
+
 	var interval = window.setInterval(fnslide, datatime);
 
 	// interactividad de navegacion
 	//
-	navs.on('click', function(){
+	navs.click(function(){
 
 		current = jQuery(this).index();
 
