@@ -1,145 +1,154 @@
+/*jslint plusplus: true*/
+/*global jQuery*/
+
 /**
-* AnythingSlider jQuery Plugin.
-* @authors Alfredo González P.
-* @date    2014-08-23 13:33:03
-* @version 1.0.1
-*/
+ * AnythingSlider jQuery Plugin.
+ * @authors Alfredo González P.
+ * @date    2014-08-23 13:33:03
+ * @version 1.0.1
+ */
 
-jQuery.anythingslider = function(idContent,type,animation,transition) {
+jQuery.anythingslider = function (idContent, type, animation, transition) {
 
-  "use strict";
+    'use strict';
 
-  var content = jQuery(idContent + ' .anythingSlider-content li');
-  var navs = jQuery(idContent + ' .anythingSlider-nav li');
-  var elength = content.length;
-  var cont = 0;
-  var current = 0;
-  var enow = jQuery(idContent + ' .anythingSlider-content li:nth-child(1)');
-  var datatime = enow.data('time');
-  var elemcontent = [];
-  var img_url = '';
-  var jQ_contentAct;
+    var content = jQuery(idContent + ' .anythingSlider-content li'),
+        navs = jQuery(idContent + ' .anythingSlider-nav li'),
+        elength = content.length,
+        cont = 0,
+        current = 0,
+        enow = jQuery(idContent + ' .anythingSlider-content li:nth-child(1)'),
+        datatime = enow.data('time'),
+        elemcontent = [],
+        img_url = '',
+        jQ_contentAct,
+        interval,
+        preloadImage = function (url, callback) {
+            try {
+                var n_img = new Image();
+                n_img.src = url;
+                n_img.onload = callback();
+            } catch (e) {
+                window.console.log('Preloading error: ' + e);
+            }
+        },
+        fnslide = function (current) {
+            clearInterval(interval);
 
-  var preloadImage = function (url, callback) {
-          try {
-              var _img = new Image();
-              _img.src = url;
-              _img.onload = callback();
-          } catch (e) {
-              window.console.log('Preloading error: ' + e);
-          }
-      };
+            if (animation === 'slide') {
+                enow.slideUp();
+            } else {
+                enow.hide();
+            }
+            if (transition === 'direct') {
+                navs.removeClass("active");
+            } else {
+                navs.removeClass("active").removeClass("preactive");
+            }
 
-  if (datatime === '0') datatime = '60000';
+            if (current >= 0) {
+                cont = current - 1;
+            }
 
-  if (type === 'random') {
-    content.shuffle();
-    content = jQuery(idContent + ' .anythingSlider-content li');
-    enow = jQuery(idContent + ' .anythingSlider-content li:nth-child(1)');
-    datatime = enow.data('time');
-  }
+            if (cont < elength) {
+                cont++;
+            } else {
+                cont = 0;
+            }
 
-  jQuery.each(content, function(index, value){
-    elemcontent.push( jQuery(value).html() );
-    if (index > 0) jQuery(content[index]).html('');
-  });
+            jQuery(content).html('');
+            jQ_contentAct = jQuery(content[cont]);
+            jQ_contentAct.html(elemcontent[cont]);
 
-  enow.show();
+            if (cont < elength) {
+                if (elemcontent[cont].indexOf(".gif") > 0) {
+                    var date = new Date();
+                    img_url = jQ_contentAct.find('img').attr('src');
+                    img_url = img_url + '?v=' + date.getTime();
+                    preloadImage(img_url, function () {
+                        jQ_contentAct.find('img').attr('src', img_url);
+                    });
+                }
+            }
 
-  jQuery(idContent + ' .anythingSlider-nav li:nth-child(1)').addClass("active");
+            enow = jQuery(idContent + ' .anythingSlider-content li:nth-child(' + (cont + 1) + ')');
+            if (animation === 'fade') {
+                enow.fadeIn();
+            } else if (animation === 'slide') {
+                enow.slideDown();
+            } else {
+                enow.show();
+            }
+            datatime = enow.data('time');
+            if (datatime === '0') {
+                datatime = '60000';
+            }
+            jQuery(idContent + ' .anythingSlider-nav li:nth-child(' + (cont + 1) + ')').addClass("active");
+            interval = window.setInterval(fnslide, datatime);
+        };
 
-  var fnslide = function (current) {
-    clearInterval(interval);
-
-    if (animation === 'slide') {
-      enow.slideUp();
-    } else {
-      enow.hide();
+    if (datatime === '0') {
+        datatime = '60000';
     }
-    if (transition === 'direct') {
-      navs.removeClass("active");
-    } else {
-      navs.removeClass("active").removeClass("preactive");
+
+    if (type === 'random') {
+        content.shuffle();
+        content = jQuery(idContent + ' .anythingSlider-content li');
+        enow = jQuery(idContent + ' .anythingSlider-content li:nth-child(1)');
+        datatime = enow.data('time');
     }
 
-    if (current >= 0) cont = current - 1;
+    jQuery.each(content, function (index, value) {
+        elemcontent.push(jQuery(value).html());
+        if (index > 0) {
+            jQuery(content[index]).html('');
+        }
+    });
 
-    if (cont < elength) {
-      cont++;
-    } else {
-      cont = 0;
-    }
+    enow.show();
 
-    jQuery(content).html('');
-    jQ_contentAct = jQuery(content[cont]);
-    jQ_contentAct.html(elemcontent[cont]);
+    jQuery(idContent + ' .anythingSlider-nav li:nth-child(1)').addClass("active");
 
-    if (cont < elength) {
-      if ( elemcontent[cont].indexOf(".gif") > 0 ) {
-        var date = new Date();
-        img_url = jQ_contentAct.find('img').attr('src');
-        img_url = img_url  + '?v=' + date.getTime();
-        preloadImage(img_url, function() {
-          jQ_contentAct.find('img').attr('src', img_url);
-        });
-      }
-    }
-
-    enow = jQuery(idContent + ' .anythingSlider-content li:nth-child('+ (cont +1) +')');
-    if (animation === 'fade') {
-      enow.fadeIn();
-    } else if (animation === 'slide') {
-      enow.slideDown();
-    } else {
-      enow.show();
-    }
-    datatime = enow.data('time');
-    if (datatime === '0') datatime = '60000';
-    jQuery(idContent + ' .anythingSlider-nav li:nth-child('+ (cont +1) +')').addClass("active");
     interval = window.setInterval(fnslide, datatime);
-  };
 
-  var interval = window.setInterval(fnslide, datatime);
+    // interactividad de navegacion
+    //
+    navs.click(function () {
 
-  // interactividad de navegacion
-  //
-  navs.click(function(){
+        current = jQuery(this).index();
 
-    current = jQuery(this).index();
+        if (transition === 'direct') {
+            fnslide(current);
+        } else {
+            if (current !== cont) {
+                cont = jQuery(this).index();
+                navs.removeClass("preactive");
+                jQuery(this).addClass("preactive");
+            }
+        }
 
-    if (transition === 'direct') {
-      fnslide(current);
-    } else {
-      if (current != cont) {
-        cont = jQuery(this).index();
-        navs.removeClass("preactive");
-        jQuery(this).addClass("preactive");
-      }
-    }
-
-  });
+    });
 
 };
 
-(function(jQuery){
+(function (jQuery) {
+    'use strict';
 
-    jQuery.fn.shuffle = function() {
+    jQuery.fn.shuffle = function () {
         var allElems = this.get(),
-            getRandom = function(max) {
+            getRandom = function (max) {
                 return Math.floor(Math.random() * max);
             },
-            shuffled = jQuery.map(allElems, function(){
+            shuffled = jQuery.map(allElems, function () {
                 var random = getRandom(allElems.length),
                     randEl = jQuery(allElems[random]).clone(true)[0];
                 allElems.splice(random, 1);
                 return randEl;
-           });
-        this.each(function(i){
+            });
+        this.each(function (i) {
             jQuery(this).replaceWith(jQuery(shuffled[i]));
         });
         return jQuery(shuffled);
     };
 
-})(jQuery);
-
-
+}(jQuery));
