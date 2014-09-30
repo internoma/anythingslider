@@ -45,11 +45,9 @@ jQuery.anythingslider = function (idContent, type, animation, transition) {
             } else {
                 navs.removeClass("active").removeClass("preactive");
             }
-
             if (current >= 0) {
                 cont = current - 1;
             }
-
             if (cont < elength) {
                 cont++;
             } else {
